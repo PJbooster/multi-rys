@@ -1,11 +1,16 @@
 import Window from "../drag-windows/Window";
+import {Box} from "@mui/material";
 
-export default function Board() {
+export default function Board({windows}) {
 
 
     return (
         <>
-            <Window>Content</Window>
+            {windows.map((window, index) => (
+                <Box key={`window${index}`}>
+                    <window.component />
+                </Box>
+            ))}
         </>
     );
 }

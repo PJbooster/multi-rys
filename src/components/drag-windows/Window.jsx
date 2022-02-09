@@ -23,6 +23,7 @@ export default function Window
 
     const color = blue[200];
     const bgColor = grey[50];
+    const borderColor = grey[300];
     const colorClose = red[300];
 
     const [isDragged, setIsDragged, isDraggedRef] = useStateRef(false);
@@ -57,8 +58,31 @@ export default function Window
 
     const handleMouseMove = (e) => {
         if (isDraggedRef.current) {
-            setLeft(e.clientX - offsetXRef.current);
-            setTop(e.clientY - offsetYRef.current);
+            let reLeft = e.clientX - offsetXRef.current;
+            let reTop = e.clientY - offsetYRef.current;
+
+            const innerHeight = window.innerHeight;
+            const innerWidth = window.innerWidth;
+
+            if (reLeft + width > innerWidth) {
+                setLeft(innerWidth - width);
+            }
+            else if (reLeft < 0) {
+                setLeft(0);
+            }
+            else {
+                setLeft(reLeft);
+            }
+
+            if (reTop + height > innerHeight) {
+                setTop(innerHeight - height);
+            }
+            else if (reTop < 0) {
+                setTop(0);
+            }
+            else {
+                setTop(reTop);
+            }
         }
     }
 
@@ -74,7 +98,8 @@ export default function Window
                   minWidth: width,
                   minHeight: height,
                   borderRadius: "10px",
-                  backgroundColor: bgColor
+                  backgroundColor: bgColor,
+                  border: `1px solid ${borderColor}`,
               }}
           >
               <Box

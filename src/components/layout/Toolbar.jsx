@@ -5,7 +5,7 @@ import {useTool} from "../../app/hooks/useTool";
 import { blue } from '@mui/material/colors';
 import {useTranslation} from "react-i18next";
 
-export default function Toolbar() {
+export default function Toolbar({openWindow = () => {}}) {
 
     const {t} = useTranslation();
 
@@ -78,6 +78,7 @@ export default function Toolbar() {
                                             backgroundColor: colorHover
                                         }
                                     }}
+                                    onClick={() => openWindow(tool)}
                                 >
                                     <tool.icon/>
                                 </IconButton>

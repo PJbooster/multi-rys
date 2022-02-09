@@ -15,84 +15,118 @@ import Grid4x4Icon from '@mui/icons-material/Grid4x4';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import DrawsWindow from "../components/windows/DrawsWindow";
+import DrawMapWindow from "../components/windows/DrawMapWindow";
+import OnesWindow from "../components/windows/OnesWindow";
+import PeersWindow from "../components/windows/PeersWindow";
+import ThreesWindow from "../components/windows/ThreesWindow";
+import FoursWindow from "../components/windows/FoursWindow";
+import FivesWindow from "../components/windows/FivesWindow";
+import MergePeersThreesWindow from "../components/windows/MergePeersThreesWindow";
+import CreatePeerWindow from "../components/windows/CreatePeerWindow";
+import CombinationsWindow from "../components/windows/CombinationsWindow";
+import TestNumbersWindow from "../components/windows/TestNumbersWindow";
+import PeriodicityWindow from "../components/windows/PeriodicityWindow";
+import SetsWindow from "../components/windows/SetsWindow";
+import GridWindow from "../components/windows/GridWindow";
+import NumberGeneratorWindow from "../components/windows/NumberGeneratorWindow";
+import BuildSystemWindow from "../components/windows/BuildSystemWindow";
+import CatalogsWindow from "../components/windows/CatalogsWindow";
 
 export const ITEM_TOOLS_1 = [
     {
         icon: ShuffleIcon,
-        label: "draws"
+        label: "draws",
+        component: DrawsWindow
     },
     {
         icon: TableChartIcon,
-        label: "draw-map"
+        label: "draw-map",
+        component: DrawMapWindow
     }
 ];
 
 export const ITEM_TOOLS_STAT = [
     {
         icon: LooksOneIcon,
-        label: "one-peer"
+        label: "one-peer",
+        component: OnesWindow
     },
     {
         icon: LooksTwoIcon,
-        label: "two-peer"
+        label: "two-peer",
+        component: PeersWindow
     },
     {
         icon: Looks3Icon,
-        label: "three-peer"
+        label: "three-peer",
+        component: ThreesWindow
     },
     {
         icon: Looks4Icon,
-        label: "four-peer"
+        label: "four-peer",
+        component: FoursWindow
     },
     {
         icon: Looks5Icon,
-        label: "five-peer"
+        label: "five-peer",
+        component: FivesWindow
     }
 ];
 
 export const ITEM_TOOLS_TOOLS = [
     {
         icon: MergeIcon,
-        label: "merge-peers-threes"
+        label: "merge-peers-threes",
+        component: MergePeersThreesWindow
     },
     {
         icon: CreateIcon,
-        label: "create-peer"
+        label: "create-peer",
+        component: CreatePeerWindow
     },
     {
         icon: BlenderIcon,
-        label: "combinations"
+        label: "combinations",
+        component: CombinationsWindow
     },
     {
         icon: QuizIcon,
-        label: "test-numbers"
+        label: "test-numbers",
+        component: TestNumbersWindow
     },
     {
         icon: AdjustIcon,
-        label: "periodicity"
+        label: "periodicity",
+        component: PeriodicityWindow,
     },
     {
         icon: GridGoldenratioIcon,
-        label: "set"
+        label: "set",
+        component: SetsWindow,
     },
     {
         icon: Grid4x4Icon,
-        label: "grid"
+        label: "grid",
+        component: GridWindow
     },
     {
         icon: FormatListNumberedIcon,
-        label: "number-generator"
+        label: "number-generator",
+        component: NumberGeneratorWindow
     }
 ];
 
 export const ITEM_TOOLS_SYSTEM = [
     {
         icon: ConstructionIcon,
-        label: "build-system"
+        label: "build-system",
+        component: BuildSystemWindow
     },
     {
         icon: DriveFolderUploadIcon,
-        label: "catalog-of-system"
+        label: "catalog-of-system",
+        component: CatalogsWindow
     }
 ];
 
