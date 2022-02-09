@@ -5,6 +5,7 @@ import {useStateRef} from "../../app/hooks/useStateRef";
 import {useTranslation} from "react-i18next";
 import CancelIcon from '@mui/icons-material/Cancel';
 import RemoveIcon from '@mui/icons-material/Remove';
+import {GLOBAL_EDGES_GAP, INITIAL_WINDOWS_GAP} from "../../app/def";
 
 export default function Window
     ({
@@ -19,7 +20,6 @@ export default function Window
     }) {
 
     const {t} = useTranslation();
-    const ref = useRef();
 
     const color = blue[200];
     const bgColor = grey[50];
@@ -32,8 +32,8 @@ export default function Window
     const [width] = useState(w);
     const [height] = useState(h);
 
-    const [left, setLeft] = useState(x);
-    const [top, setTop] = useState(y);
+    const [left, setLeft] = useState(x + INITIAL_WINDOWS_GAP);
+    const [top, setTop] = useState(y + INITIAL_WINDOWS_GAP);
 
     const [, setOffsetX, offsetXRef] = useStateRef(0);
     const [, setOffsetY, offsetYRef] = useStateRef(0);
@@ -64,21 +64,21 @@ export default function Window
             const innerHeight = window.innerHeight;
             const innerWidth = window.innerWidth;
 
-            if (reLeft + width > innerWidth) {
-                setLeft(innerWidth - width);
+            if (reLeft + width + GLOBAL_EDGES_GAP > innerWidth) {
+                setLeft(innerWidth - width - GLOBAL_EDGES_GAP);
             }
-            else if (reLeft < 0) {
-                setLeft(0);
+            else if (reLeft < GLOBAL_EDGES_GAP) {
+                setLeft(GLOBAL_EDGES_GAP);
             }
             else {
                 setLeft(reLeft);
             }
 
-            if (reTop + height > innerHeight) {
-                setTop(innerHeight - height);
+            if (reTop + height + GLOBAL_EDGES_GAP > innerHeight) {
+                setTop(innerHeight - height - GLOBAL_EDGES_GAP);
             }
-            else if (reTop < 0) {
-                setTop(0);
+            else if (reTop < GLOBAL_EDGES_GAP) {
+                setTop(GLOBAL_EDGES_GAP);
             }
             else {
                 setTop(reTop);
@@ -89,7 +89,6 @@ export default function Window
     return (
       <>
           <Box
-              ref={ref}
               sx={{
                   position: "absolute",
                   zIndex: 1,

@@ -33,6 +33,10 @@ import NumberGeneratorWindow from "../components/windows/NumberGeneratorWindow";
 import BuildSystemWindow from "../components/windows/BuildSystemWindow";
 import CatalogsWindow from "../components/windows/CatalogsWindow";
 
+export const GLOBAL_EDGES_GAP = 10;
+export const INITIAL_WINDOWS_GAP = 100;
+export const WINDOWS_GAP = 20;
+
 export const ITEM_TOOLS_1 = [
     {
         icon: ShuffleIcon,

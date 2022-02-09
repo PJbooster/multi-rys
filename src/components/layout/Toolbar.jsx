@@ -1,6 +1,6 @@
 import {Box, Button, ButtonGroup, IconButton, Tooltip} from "@mui/material";
 import {ITEMS_NAV} from "../../app/def";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useTool} from "../../app/hooks/useTool";
 import { blue } from '@mui/material/colors';
 import {useTranslation} from "react-i18next";
@@ -22,17 +22,21 @@ export default function Toolbar({openWindow = () => {}}) {
     return (
         <>
             <Box
-                minWidth="100vh"
-                sx={{
-                    padding: 2,
-                    zIndex: 99,
-                    position: "relative"
-                }}
+                position="relative"
             >
                 <Box
-                    display="flex"K
+                    display="flex"
                     justifyContent="center"
                     alignItems="center"
+                    sx={{
+                        zIndex: 99,
+                        position: "absolute",
+                        top: 20,
+                        left: 0,
+                        bottom: 0,
+                        right: 0,
+                        margin: "auto"
+                    }}
                 >
                     <Box>
                         <ButtonGroup
