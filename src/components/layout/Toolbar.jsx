@@ -1,6 +1,6 @@
 import {Box, Button, ButtonGroup, IconButton, Tooltip} from "@mui/material";
 import {ITEMS_NAV} from "../../app/def";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useTool} from "../../app/hooks/useTool";
 import { blue } from '@mui/material/colors';
 import {useTranslation} from "react-i18next";
@@ -61,6 +61,7 @@ export default function Toolbar({openWindow = () => {}}) {
                     alignItems="left"
                     sx={{
                         zIndex: 99,
+                        top: "100px",
                         position: "absolute"
                     }}
                 >

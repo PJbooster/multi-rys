@@ -21,5 +21,8 @@
   "grid": "Układy",
   "number-generator": "Generator liczb",
   "build-system": "Buduj system",
-  "catalog-of-system": "Katalog systemów"
+  "catalog-of-system": "Katalog systemów",
+  "draw_numbers": "Wylosowane liczby",
+  "date": "Data",
+  "number": "Numer"
 }

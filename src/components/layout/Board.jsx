@@ -12,6 +12,7 @@ export default function Board({windows, onClose, onMinimalize, onMaximalize}) {
                         x={index*WINDOWS_GAP}
                         onClose={() => onClose(window.id)}
                         onMinimalize={() => onMinimalize(window.id) }
+                        label={window.content.label}
                     >
                         <window.content.component/>
                     </Window>
@@ -24,12 +25,12 @@ export default function Board({windows, onClose, onMinimalize, onMaximalize}) {
             >
                 {windows.map((window, index) => (
                     <Box
-                        hidden={!window.hidden}
+                        key={`tab${index}`}
                         sx={{
                             zIndex: 99,
                             position: "fixed",
                             bottom: 0,
-                            left: index * 100,
+                            left: 5 + (index * 105),
                         }}
                     >
                         <Button

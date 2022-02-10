@@ -13,7 +13,7 @@ export default function Window
          x = 100,
          y = 100,
          w = 800,
-         h = 400,
+         h = 600,
          children,
          onClose = () => {},
          onMinimalize = () => {}
@@ -118,7 +118,7 @@ export default function Window
                       }}
                   >
                       <Box sx={{margin: 1}}>
-                          {label}
+                          {t(label)}
                       </Box>
                   </Box>
                   <Box

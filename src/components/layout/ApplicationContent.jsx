@@ -6,6 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 export default function ApplicationContent() {
 
     const [windows, setWindows] = useState([]);
+    const [tabs, setTabs] = useState([]);
 
     const handlePushWindow = (window) => {
         const wrapper = {
@@ -24,6 +25,7 @@ export default function ApplicationContent() {
         return windows.map(window => {
             if (window.id === uuid) {
                 window.hidden = isHidden;
+
             }
             return window
         })

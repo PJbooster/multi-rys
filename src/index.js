@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import'./i18n/config';
 import reportWebVitals from './reportWebVitals';
+import axios from "axios";
+
+axios.defaults.baseURL = 'https://www.lotto.pl';
 
 ReactDOM.render(
   <React.StrictMode>
