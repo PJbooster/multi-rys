@@ -6,7 +6,9 @@ import'./i18n/config';
 import reportWebVitals from './reportWebVitals';
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://www.lotto.pl';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'
+    ? ``
+    : `${process.env.REACT_APP_URL}`;
 
 ReactDOM.render(
   <React.StrictMode>

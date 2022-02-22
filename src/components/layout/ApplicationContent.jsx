@@ -14,18 +14,20 @@ export default function ApplicationContent() {
             content: window,
             id: uuidv4()
         }
+        console.log(wrapper);
         setWindows(oldWindows => [...oldWindows, wrapper]);
     }
 
     const handleClose = (uuid) => {
-        setWindows(windows.filter(window => window.id !== uuid ));
+        console.log(uuid);
+        setWindows(windows.filter(window => {return window.id !== uuid} ));
+        console.log(windows)
     }
 
     const handleHidden = (uuid, isHidden) => {
         return windows.map(window => {
             if (window.id === uuid) {
                 window.hidden = isHidden;
-
             }
             return window
         })

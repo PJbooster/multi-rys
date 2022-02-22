@@ -1,15 +1,15 @@
 import {Box, IconButton, Tooltip} from "@mui/material";
 import {blue, grey, red} from "@mui/material/colors";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {useStateRef} from "../../app/hooks/useStateRef";
-import {useTranslation} from "react-i18next";
 import CancelIcon from '@mui/icons-material/Cancel';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {GLOBAL_EDGES_GAP, INITIAL_WINDOWS_GAP} from "../../app/def";
+import {useTranslation} from "react-i18next";
 
 export default function Window
     ({
-         label = "Window",
+         label = "draws",
          x = 100,
          y = 100,
          w = 800,
