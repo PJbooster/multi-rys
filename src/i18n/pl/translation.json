@@ -28,6 +28,9 @@
   "super_szansa": "Super Szansa",
   "bonus": "Bonus",
   "close": "Zamknij",
-  "minimalize": "Minimalizuj"
+  "minimalize": "Minimalizuj",
+  "error_messages": {
+    "max_10_windows": "Można otworzyć maksymalnie 10 okien."
+  }
 
 }

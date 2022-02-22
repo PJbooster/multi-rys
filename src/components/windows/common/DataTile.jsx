@@ -14,7 +14,9 @@ export default function DataTile({node}) {
             {node &&
                 <Box m={1} sx={{border: `1px solid ${color}`, borderRadius: 2}}>
                     <Box display="flex" p={1}>
-                        <Box sx={{width: '20%', fontSize: fontSize, fontWeight: 'bold'}}>{node.drawSystemId.toString()}</Box>
+
+                        {/*Sometimes external API get null as drawSystemId so we need check it. */}
+                        <Box sx={{width: '20%', fontSize: fontSize, fontWeight: 'bold'}}>{node.drawSystemId ? node.drawSystemId.toString() : 'none'}</Box>
                         <Box sx={{width: '80%'}} display="flex" justifyContent="flex-end">
                             {node.resultsJson.map((number, index) => (
                                 <Chip key={`ssrr${index}`} label={number.toString()} size="small"/>

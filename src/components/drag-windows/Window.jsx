@@ -15,8 +15,10 @@ export default function Window
          w = 800,
          h = 600,
          children,
+         zIndex = 1,
          onClose = () => {},
-         onMinimalize = () => {}
+         onMinimalize = () => {},
+         onFocus = () => {}
     }) {
 
     const {t} = useTranslation();
@@ -49,10 +51,17 @@ export default function Window
     }, [isDragged])
 
     const handleMouseDown = (e) => {
+        e.preventDefault();
+
         setIsDragged(true);
+        // onFocus();
         setMouseDownPosition({x: e.clientX, y: e.clientY});
+        setOffsetX(e.clientX - left);
+        setOffsetY(e.clientY - top);
     }
     const handleMouseUp = (e) => {
+        e.preventDefault()
+
         setIsDragged(false);
     }
 
@@ -91,7 +100,7 @@ export default function Window
           <Box
               sx={{
                   position: "absolute",
-                  zIndex: 1,
+                  zIndex: zIndex,
                   top: top,
                   left: left,
                   minWidth: width,
