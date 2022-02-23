@@ -1,5 +1,5 @@
 import {Box} from "@mui/material";
-import DataList from "./common/DataList";
+import DataList from "./DataList";
 
 export default function DrawsWindow() {
     return (
