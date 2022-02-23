@@ -6,6 +6,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {GLOBAL_EDGES_GAP, INITIAL_WINDOWS_GAP} from "../../app/def";
 import {useTranslation} from "react-i18next";
+import eventBus, {WINDOW_FOCUS_APPLY_EVENT, WINDOW_FOCUS_EVENT} from "../../app/eventBus/eventBus";
 
 export default function Window
     ({
@@ -15,10 +16,10 @@ export default function Window
          w = 800,
          h = 600,
          children,
+         id,
          zIndex = 1,
          onClose = () => {},
          onMinimalize = () => {},
-         onFocus = () => {}
     }) {
 
     const {t} = useTranslation();
@@ -40,9 +41,14 @@ export default function Window
     const [, setOffsetX, offsetXRef] = useStateRef(0);
     const [, setOffsetY, offsetYRef] = useStateRef(0);
 
+
+    const [, setZIndexWindow, zIndexWindowRef] = useStateRef(zIndex);
+
     useEffect(() => {
         window.addEventListener("mousemove", (e) => handleMouseMove(e));
         window.addEventListener("mouseup", (e) => handleMouseUp(e));
+
+        eventBus.on(WINDOW_FOCUS_APPLY_EVENT, (details) => handleFocus(details))
     }, [])
 
     useEffect(() => {
@@ -50,14 +56,19 @@ export default function Window
         setOffsetY(mouseDownPosition.y - top);
     }, [isDragged])
 
+    const handleFocus = (details) => {
+        if (details.id === id) setZIndexWindow(details.zIndex);
+    }
+
     const handleMouseDown = (e) => {
         e.preventDefault();
 
         setIsDragged(true);
-        // onFocus();
         setMouseDownPosition({x: e.clientX, y: e.clientY});
         setOffsetX(e.clientX - left);
         setOffsetY(e.clientY - top);
+
+        eventBus.dispatch(WINDOW_FOCUS_EVENT, {id: id});
     }
     const handleMouseUp = (e) => {
         e.preventDefault()
@@ -66,6 +77,8 @@ export default function Window
     }
 
     const handleMouseMove = (e) => {
+        e.preventDefault()
+
         if (isDraggedRef.current) {
             let reLeft = e.clientX - offsetXRef.current;
             let reTop = e.clientY - offsetYRef.current;
@@ -100,7 +113,7 @@ export default function Window
           <Box
               sx={{
                   position: "absolute",
-                  zIndex: zIndex,
+                  zIndex: zIndexWindowRef.current,
                   top: top,
                   left: left,
                   minWidth: width,

@@ -4,6 +4,7 @@ import {useState} from "react";
 import {v4 as uuidv4} from 'uuid';
 import {Alert, Snackbar} from "@mui/material";
 import {useTranslation} from "react-i18next";
+import FocusWindowManager from "../managers/FocusWindowManager";
 
 export default function ApplicationContent() {
 
@@ -28,16 +29,15 @@ export default function ApplicationContent() {
             return
         }
 
-        let newUuid = uuidv4();
         const wrapper = {
             hidden: false,
             closed: true,
             content: window,
-            zIndex: 10,
-            id: newUuid
+            zIndex: 1,
+            id: uuidv4()
         }
 
-        setWindows(oldWindows => [...oldWindows.map(window => {window.zIndex = 1; return window}), wrapper]);
+        setWindows(oldWindows => [...oldWindows, wrapper]);
     }
 
     const handleClose = (uuid) => {
@@ -70,18 +70,6 @@ export default function ApplicationContent() {
         setOpenErrorToast(false);
     }
 
-    const handleFocus = (uuid) => {
-        setWindows(windows.map(window => {
-            if (window.id === uuid) {
-                window.zIndex = 10;
-            } else {
-                window.zIndex = 1;
-            }
-
-            return window
-        }));
-    }
-
     return (
       <>
           <Snackbar open={openErrorToast} autoHideDuration={6000} onClose={handleCloseToast} anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
@@ -95,8 +83,10 @@ export default function ApplicationContent() {
               onClose={handleClose}
               onMinimalize={handleMinimalize}
               onMaximalize={handleMaximalize}
-              onFocus={handleFocus}
           />
+
+          {/*Application managers. */}
+          <FocusWindowManager />
       </>
     );
 }

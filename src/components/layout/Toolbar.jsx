@@ -29,7 +29,7 @@ export default function Toolbar({openWindow = () => {}}) {
                     justifyContent="center"
                     alignItems="center"
                     sx={{
-                        zIndex: 99,
+                        zIndex: 9999,
                         position: "absolute",
                         top: 20,
                         left: 0,
@@ -60,7 +60,7 @@ export default function Toolbar({openWindow = () => {}}) {
                     justifyContent="left"
                     alignItems="left"
                     sx={{
-                        zIndex: 99,
+                        zIndex: 9999,
                         top: "100px",
                         position: "absolute"
                     }}

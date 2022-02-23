@@ -19,9 +19,9 @@ export default function Board({windows, onClose, onMinimalize, onMaximalize, onF
                         <Window
                             y={index*WINDOWS_GAP}
                             x={index*WINDOWS_GAP}
+                            id={window.id}
                             onClose={() => onClose(window.id)}
                             onMinimalize={() => onMinimalize(window.id) }
-                            onFocus={() => onFocus(window.id)}
                             zIndex={window.zIndex}
                             label={window.content.label}
                         >
