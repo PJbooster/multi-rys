@@ -14,7 +14,7 @@ export default function Window
          x = 100,
          y = 100,
          w = 800,
-         h = 600,
+         h = 700,
          children,
          id,
          zIndex = 1,

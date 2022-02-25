@@ -29,6 +29,8 @@
   "bonus": "Bonus",
   "close": "Zamknij",
   "minimalize": "Minimalizuj",
+  "map_one": "Mapa 1",
+  "map_two": "Mapa 2",
   "error_messages": {
     "max_10_windows": "Można otworzyć maksymalnie 10 okien."
   }
